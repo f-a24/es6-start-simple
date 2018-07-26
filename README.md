@@ -3,7 +3,7 @@
 ## Usage
 
 1. Clone or download
-2. `cd es6-start`
+2. `cd es6-start-simple`
 3. `yarn install`
 
 ## Directory structure
