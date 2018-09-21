@@ -1,4 +1,5 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: process.env.WEBPACK_SERVE ? 'development' : 'production',
@@ -41,13 +42,22 @@ module.exports = {
             'sass-loader'
           ]
         })
+      },
+      {
+        test: /\.html$/,
+        loader: "html-loader"
       }
     ]
   },
   resolve: {
     extensions: ['.js']
   },
-  plugins: [new ExtractTextPlugin('style.css')],
+  plugins: [
+    new ExtractTextPlugin('style.css'),
+    new HtmlWebpackPlugin({
+      template: "./src/html/index.html"
+    })
+  ],
   performance: {
     hints: false
   },
