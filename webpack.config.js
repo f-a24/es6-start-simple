@@ -1,8 +1,7 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: process.env.WEBPACK_SERVE ? 'development' : 'production',
+  mode: 'production',
   entry: `${__dirname}/src/js/index.js`,
   output: {
     path: `${__dirname}/public`,
@@ -42,22 +41,13 @@ module.exports = {
             'sass-loader'
           ]
         })
-      },
-      {
-        test: /\.html$/,
-        loader: "html-loader"
       }
     ]
   },
   resolve: {
     extensions: ['.js']
   },
-  plugins: [
-    new ExtractTextPlugin('style.css'),
-    new HtmlWebpackPlugin({
-      template: "./src/html/index.html"
-    })
-  ],
+  plugins: [new ExtractTextPlugin('style.css')],
   performance: {
     hints: false
   },
@@ -65,6 +55,6 @@ module.exports = {
     contentBase: `${__dirname}/public`,
     port: 3000,
     hot: true,
-    open: true,
+    open: true
   }
 };
